@@ -1,0 +1,143 @@
+@import '../../styles/variables.less';
+@import '../../styles/mixin.less';
+
+.Kyong-input {
+
+    &-wrapper {
+        display: flex;
+        position: relative;
+    }
+
+    &-container {
+        position: relative;
+        width: 100%;
+    }
+
+    &-inner {
+        padding: @input-padding-y-sm @input-padding-x-sm;
+        font-family: @primaryFont;
+        font-size: 0.8rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #3A404C;
+        border: 1px solid @gray-400;
+        background-color: @white;
+        border-radius: .2rem;
+        width: 100%;
+
+        &:focus {
+            border-color: @primaryActiveColor;
+            outline: 0;
+            box-shadow: 0 0 2px 2px rgba(@primaryActiveColor, .1);
+        }
+
+        &::placeholder {
+            color: @gray-300;
+            opacity: 1;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: rgba(@g07, .25);
+            border-color: null;
+            color: red;
+            opacity: 1;
+        }
+
+        // &:hover {
+        //     border-color: @primaryHoverColor;
+        //     outline: 0;
+        //     transition: all .3s;
+        // }
+
+        &-is-hover {
+            input:hover {
+                border-color: @primaryHoverColor;
+                outline: 0;
+                transition: all .3s;
+            }
+        }
+    }
+
+    &-group-prepend,
+    &-group-append {
+        display: flex;
+        align-items: center;
+        font-size: .8rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: rgba(#3A404C, .95);
+        text-align: center;
+        white-space: nowrap;
+        background-color: @gray-200;
+        padding: 4px 11px;
+        border: 1px solid @gray-400;
+        border-radius: .2rem;
+    }
+
+    &-prefix {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(.6rem, -50%);
+        font-size: .8rem;
+        font-size: 400;
+        line-height: 1.5;
+        color: rgba(#3A404C, .95);
+
+        svg {
+            color: rgba(#3A404C, .95);
+        }
+    }
+
+    &-suffix {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(-.6rem, -50%);
+        font-size: .8rem;
+        font-size: 400;
+        line-height: 1.5;
+        color: rgba(#3A404C, .95);
+
+        svg {
+            color: rgba(#3A404C, .95);
+        }
+    }
+}
+
+.Kyong-input-group-append+.btn {
+    padding: 0;
+    border: 0;
+}
+
+.input-group>.Kyong-input-group-prepend {
+    border-right: 0;
+}
+
+.input-group>.Kyong-input-group-append {
+    border-left: 0;
+}
+
+.input-group>.Kyong-input-group-prepend,
+.input-group.input-group-append .Kyong-input-inner {
+    .border-right-radius(0);
+}
+
+.input-group>.Kyong-input-group-append,
+.input-group.input-group-prepend .Kyong-input-inner {
+    .border-left-radius(0);
+}
+
+
+.input-size-sm .Kyong-input-inner {
+    padding: @input-padding-y-sm @input-padding-x-sm;
+    font-size: 0.8rem;
+    border-radius: .2rem;
+}
+
+.input-size-lg .Kyong-input-inner {
+    padding: @input-padding-y-lg @input-padding-x-lg;
+    font-size: 1rem;
+    border-radius: .3rem;
+}

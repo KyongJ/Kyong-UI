@@ -1,0 +1,64 @@
+@import '../../styles/variables.less';
+
+.Kyong-btn {
+  position: relative;
+  display: inline-block;
+  padding: .5rem 1.2rem;
+  font-size: 1rem;
+  font-family: @primaryFont;
+  border: none;
+  border-radius: .2rem;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  transition: background-color 0.2s linear, color 0.2s linear;
+
+  &:hover {
+    background-color: @primaryHoverColor !important;
+    color: @textColorOnPrimary;
+  }
+
+  // &:focus {
+  //   outline: 3px solid @primaryHoverColor;
+  //   outline-offset: 2px;
+  // }
+  &:active {
+    background-color: @primaryActiveColor;
+    border-color: @primaryActiveColor;
+    color: @textColorOnPrimary;
+  }
+}
+
+.Kyong-btn--primary {
+  background-color: @primaryColor;
+  color: @textColorOnPrimary;
+}
+
+.Kyong-btn--text {
+  background-color: transparent;
+  color: @black;
+}
+
+.Kyong-btn--link {
+  background-color: transparent;
+  color: @primaryColor;
+  &:hover{
+    background-color: transparent !important;
+    color:lighten(@primaryColor, 15%);
+  }
+}
+
+.Kyong-btn--sm {
+  font-size: 0.8rem;
+  padding: .3rem 1rem;
+}
+
+.Kyong-btn--md {
+  font-size: 1rem;
+  padding: .5rem 1.2rem;
+}
+
+.Kyong-btn--lg {
+  font-size: 1.2rem;
+  padding: .5rem 1.5rem;
+}

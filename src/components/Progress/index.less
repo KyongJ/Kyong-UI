@@ -1,0 +1,109 @@
+@import '../../styles/variables.less';
+
+.Kyong-progress {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    each(@theme-colors,{
+        .Kyong-progress-color-@{key}{
+            background-color: @value;
+        }
+    })
+
+    &-bar-outer {
+        position: relative;
+        border-radius: @progress-border-radius;
+        background-color: @progress-bg;
+        overflow: hidden;
+    }
+
+    &-bar-inner {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+        border-radius: @progress-border-radius;
+        line-height: 1;
+        transition: @progress-bar-transition;
+
+        &-animate::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg,
+                    transparent 25%,
+                    rgba(255, 255, 255, 0.5) 50%,
+                    transparent 75%);
+            background-size: 400% 100%;
+            animation: progress-loading 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+        }
+
+        &-text {
+            color: @progress-bar-color;
+            font-size: .8rem;
+            margin-right: 5px;
+        }
+    }
+
+    &-circle {
+        &-wrapper {
+            position: relative;
+            display: block;
+            overflow: hidden;
+        }
+
+        &-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            // fill: $font-color;
+            // font-size: $font-size-lg;
+            // font-weight: $font-weight-base;
+            text-anchor: middle;
+        }
+    }
+
+    &-svg {
+        transform: rotate(-90deg);
+        // @each $key,
+        // $val in $theme-colors {
+        //     .chocolate-progress-circle-color-#{$key} {
+        //     stroke: $val;
+        //     }
+        // }
+        each(@theme-colors,{
+            .Kyong-progress-circle-color-@{key}{
+                stroke: @value;
+                stroke-linecap: round; // inherit
+            }
+        })
+        circle {
+            fill: none;
+            transition: stroke-dashoffset 0.3s linear;
+        }
+
+        .arc-background {
+            stroke: @gray-100;
+        }
+    }
+
+}
+
+@keyframes progress-loading {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
