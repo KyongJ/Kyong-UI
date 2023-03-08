@@ -1,6 +1,6 @@
 import {defineConfig} from 'dumi'
 
-const repo = 'kyong-ui' // 项目名(也就是你的仓库名)
+const repo = 'Kyong-UI' // 项目名(也就是你的仓库名)
 
 export default defineConfig({
   title: 'KyongUI',
@@ -12,7 +12,7 @@ export default defineConfig({
     ['zh-CN', '中文'],
     ['en-US', 'English'],
   ],
-  base: process.env.NODE_ENV === 'production' ? `/${repo}/` : '/',
-  publicPath: process.env.NODE_ENV === 'production' ? `/${repo}/` : '/',
+  base: `/${repo}/`,
+  publicPath: `/${repo}/`,
   // more config: https://d.umijs.org/config
 })
