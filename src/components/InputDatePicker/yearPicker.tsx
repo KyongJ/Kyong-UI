@@ -1,6 +1,5 @@
 import React from "react";
 import Select from "../Select";
-import Option from '../Select/selectOption'
 import { buildYears } from "./utils/generator";
 
 interface YearPickerProps {
@@ -16,7 +15,7 @@ function YearPicker(props: YearPickerProps) {
     <div>
       <Select defaultValue={defaultValue} style={{ width: 80 }} onChange={(value) => onSelectYear(Number(value))}>
         {years.map((year: number, i: number) => (
-          <Option value={year.toString()} key={i}>{year}</Option>
+          <Select.Option value={year.toString()} key={i}>{year}</Select.Option>
         ))}
       </Select>
     </div>

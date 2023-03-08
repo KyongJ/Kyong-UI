@@ -1,7 +1,7 @@
 import React, {MouseEvent, useContext, useState} from 'react'
 import classNames from 'classnames'
 import {scopedClass} from '../../utils/scopedClass'
-import {SelectContext} from '.'
+import {SelectContext} from './select'
 
 export interface SelectOptionProps {
   value: string

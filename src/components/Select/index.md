@@ -5,15 +5,15 @@
 基本使用
 ```tsx
 import React from 'react';
-import { Select,Option } from 'KyongUI';
+import { Select} from 'KyongUI';
 
 export default () => (
         <div style={{display:'flex'}}>
             <Select style={{ width: 200,marginRight:15 }} placeholder="请选择">
-                <Option value="苹果 🍎"> 苹果 🍎 </Option>
-                <Option value="橘子 🍊">橘子 🍊</Option>
-                <Option value="葡萄 🍇"> 葡萄 🍇 </Option>
-                <Option value="香蕉 🍌 " disabled> 香蕉 🍌 </Option>
+                <Select.Option value="苹果 🍎"> 苹果 🍎 </Select.Option>
+                <Select.Option value="橘子 🍊">橘子 🍊</Select.Option>
+                <Select.Option value="葡萄 🍇"> 葡萄 🍇 </Select.Option>
+                <Select.Option value="香蕉 🍌 " disabled> 香蕉 🍌 </Select.Option>
             </Select>
 
             <Select style={{ width: 200 }} placeholder="请选择" disabled />
