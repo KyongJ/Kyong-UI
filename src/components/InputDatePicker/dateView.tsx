@@ -8,9 +8,7 @@ import Icon from '../Icon'
 
 interface DateViewProps extends DataHandleProps {
   calendar: CalendarType
-  onSelectMonthYear?: Dispatch<
-    SetStateAction<{year: number; monthIndex: number}>
-  >
+  onSelectMonthYear?: Dispatch<SetStateAction<{year: number; monthIndex: number}>>
   onTitleClick?: MouseEventHandler<HTMLElement>
   //   onClickToday?: (event: ChangeEvent<HTMLInputElement>) => void
 }
@@ -45,37 +43,11 @@ const DateView: FC<DateViewProps> = (props: DateViewProps) => {
   return (
     <ViewLayout
       header={{
-        leftElement: (
-          <Button
-            btnType="text"
-            icon={<Icon icon="angle-left" />}
-            size="sm"
-            onClick={goToPreviousMonth}
-          />
-        ),
-        middleElement: (
-          <HeaderTitle
-            year={year}
-            monthIndex={monthIndex}
-            onTitleClick={onTitleClick}
-          />
-        ),
-        rightElement: (
-          <Button
-            btnType="text"
-            icon={<Icon icon="angle-right" />}
-            size="sm"
-            onClick={goToNextMonth}
-          />
-        ),
+        leftElement: <Button btnType="text" icon={<Icon icon="angle-left" />} size="sm" onClick={goToPreviousMonth} />,
+        middleElement: <HeaderTitle year={year} monthIndex={monthIndex} onTitleClick={onTitleClick} />,
+        rightElement: <Button btnType="text" icon={<Icon icon="angle-right" />} size="sm" onClick={goToNextMonth} />,
       }}
-      bodyElement={
-        <DatePicker
-          calendar={props.calendar}
-          selectedDate={selectedDate}
-          onSelectDate={onSelectDate}
-        />
-      }
+      bodyElement={<DatePicker calendar={props.calendar} selectedDate={selectedDate} onSelectDate={onSelectDate} />}
       footerElement={<Button btnType="text">Today</Button>}
     ></ViewLayout>
   )

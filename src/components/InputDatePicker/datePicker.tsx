@@ -10,7 +10,7 @@ const sc = scopedClass('Kyong-picker-date')
 
 export interface DatePickerProps extends DataHandleProps {
   calendar: CalendarType
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  // onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   className?: string
 }
 
@@ -21,10 +21,7 @@ const DatePicker: FC<DatePickerProps> = props => {
     onSelectDate,
   } = props
 
-  const weeks = useMemo(
-    () => buildWeeks(dayjs(new Date(year, monthIndex))),
-    [year, monthIndex]
-  )
+  const weeks = useMemo(() => buildWeeks(dayjs(new Date(year, monthIndex))), [year, monthIndex])
   const dayNames = useMemo(() => buildDayNames(0), [])
 
   return (
@@ -56,10 +53,7 @@ const DatePicker: FC<DatePickerProps> = props => {
                     })}
                     btnType="text"
                     onClick={e => {
-                      onSelectDate(
-                        e as unknown as ChangeEvent<HTMLInputElement>,
-                        day
-                      )
+                      onSelectDate && onSelectDate(e as unknown as ChangeEvent<HTMLInputElement>, day)
                     }}
                   >
                     {day.format('D')}

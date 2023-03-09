@@ -1,14 +1,15 @@
-import React, {forwardRef, useContext} from 'react'
+import React, {FC, forwardRef, useContext} from 'react'
 import Icon from '../Icon'
 import Input from '../Input'
-import {DateContext, IPickerContext} from './DataManager'
+import {DateContext, DateContextType} from './DataManager'
 
-interface Types {
+interface InputComponentProps {
   onClick?: (event: Event) => void
+  ref?: any
 }
 
-const InputComponent = forwardRef((props: Types, ref) => {
-  const {value, onInputChange} = useContext<IPickerContext>(DateContext)
+const InputComponent: FC<InputComponentProps> = forwardRef((props, ref) => {
+  const {value, onInputChange} = useContext<DateContextType>(DateContext)
 
   return (
     <Input
@@ -17,7 +18,7 @@ const InputComponent = forwardRef((props: Types, ref) => {
       value={value.textInput}
       style={{width: 200}}
       onChange={onInputChange}
-      suffix={<Icon icon={'calendar'}/>}
+      suffix={<Icon icon={'calendar'} />}
       ref={ref}
     />
   )

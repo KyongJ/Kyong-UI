@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import React, {ChangeEvent, createContext, useState} from 'react'
 import {dateToStr, strToDate} from './utils/date-extraction'
 
-type DateManagerState = {
+export type DateManagerState = {
   date: dayjs.Dayjs
   textInput: string
   origin?: 'PICKER' | 'INPUT'
@@ -14,13 +14,13 @@ interface DateManagerProps {
   children: React.ReactNode
 }
 
-export interface IPickerContext {
+export interface DateContextType {
   value: DateManagerState
   onSelectDate: (e: ChangeEvent<HTMLInputElement>, date: dayjs.Dayjs) => void
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const DateContext = createContext<IPickerContext>({
+export const DateContext = createContext<DateContextType>({
   value: {date: dayjs(), textInput: ''},
   onSelectDate: () => {},
   onInputChange: () => {},
@@ -33,10 +33,7 @@ const DateManager = (props: DateManagerProps) => {
     textInput: '',
   })
 
-  const onSelectDate = (
-    e: ChangeEvent<HTMLInputElement>,
-    date: dayjs.Dayjs
-  ) => {
+  const onSelectDate = (e: ChangeEvent<HTMLInputElement>, date: dayjs.Dayjs) => {
     const nextState: DateManagerState = {
       date,
       textInput: dateToStr(date),
@@ -68,17 +65,13 @@ const DateManager = (props: DateManagerProps) => {
     onChange && onChange(e, {...nextState, errors, origin: 'INPUT'})
   }
 
-  const passedContext: IPickerContext = {
+  const passedContext: DateContextType = {
     value: state,
     onSelectDate,
     onInputChange,
   }
 
-  return (
-    <DateContext.Provider value={passedContext}>
-      {children}
-    </DateContext.Provider>
-  )
+  return <DateContext.Provider value={passedContext}>{children}</DateContext.Provider>
 }
 
 export default DateManager

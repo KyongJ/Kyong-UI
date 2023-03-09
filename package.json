@@ -11,7 +11,8 @@
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepare": "husky install"
   },
   "files": [
     "dist"
@@ -22,7 +23,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
+    "*.{js,jsx,less,json}": [
       "prettier --write"
     ],
     "*.ts?(x)": [
@@ -43,16 +44,23 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^17.4.4",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^13.0.0",
     "@types/jest": "^27.0.3",
     "@types/lodash": "^4.14.191",
     "@types/react-transition-group": "^4.4.5",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
     "@umijs/fabric": "^2.8.1",
     "@umijs/test": "^3.0.5",
+    "commitlint": "^17.4.4",
     "dumi": "^1.1.0",
+    "eslint": "^8.35.0",
+    "eslint-plugin-react": "^7.32.2",
     "father": "^4.0.0-rc.2",
     "gh-pages": "^3.0.0",
+    "husky": "^8.0.3",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "yorkie": "^2.0.0"

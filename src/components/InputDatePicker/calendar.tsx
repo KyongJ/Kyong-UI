@@ -1,12 +1,5 @@
 import dayjs from 'dayjs'
-import React, {
-  ChangeEvent,
-  FC,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, {ChangeEvent, FC, useContext, useEffect, useRef, useState} from 'react'
 import {DateContext} from './DataManager'
 import DateView from './dateView'
 import MonthYearView from './monthYearView'
@@ -17,8 +10,8 @@ export interface CalendarType {
 }
 
 export interface DataHandleProps {
-  selectedDate: dayjs.Dayjs
-  onSelectDate: (e: ChangeEvent<HTMLInputElement>, date: dayjs.Dayjs) => void
+  selectedDate?: dayjs.Dayjs
+  onSelectDate?: (e: ChangeEvent<HTMLInputElement>, date: dayjs.Dayjs) => void
 }
 
 export interface CalendarProps {}
