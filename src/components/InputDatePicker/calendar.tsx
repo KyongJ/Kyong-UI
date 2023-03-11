@@ -14,9 +14,10 @@ export interface DataHandleProps {
   onSelectDate?: (e: ChangeEvent<HTMLInputElement>, date: dayjs.Dayjs) => void
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CalendarProps {}
 
-const Calendar: FC<CalendarProps> = props => {
+const Calendar: FC<CalendarProps> = () => {
   const {value, onSelectDate} = useContext(DateContext)
   const today = dayjs()
   const initialCalendar = {

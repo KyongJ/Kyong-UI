@@ -15,16 +15,14 @@ export function buildWeeks(dayjsDate: dayjs.Dayjs) {
   // 返回当月的第一周第一天
   const currentMonthStartDay = currentMonthFirstDay.startOf('week')
 
-  const weeks = new Array(6 * 7)
-    .fill(0)
-    .map((_, i) => currentMonthStartDay.add(i, 'day'))
+  const weeks = new Array(6 * 7).fill(0).map((_, i) => currentMonthStartDay.add(i, 'day'))
   return _.chunk(weeks, 7)
 }
 
 /**
- * 返回一周日期名 
- * @param weekStartsOn 
- * @returns 
+ * 返回一周日期名
+ * @param weekStartsOn
+ * @returns
  */
 export function buildDayNames(weekStartsOn: number): string[] {
   return new Array(7)
@@ -38,7 +36,7 @@ export function buildDayNames(weekStartsOn: number): string[] {
 
 /**
  * 返回1-12月份
- * @returns 
+ * @returns
  */
 export function buildMonths(): MonthOfYear[][] {
   const months = new Array(3 * 4).fill(0).map((_, i) => {
@@ -50,16 +48,16 @@ export function buildMonths(): MonthOfYear[][] {
 
 /**
  * 制造年份选择器
- * @param middle 
- * @param windowSize 
- * @returns 
+ * @param middle
+ * @param windowSize
+ * @returns
  */
-export function buildYears(middle: number, windowSize: number = 3): number[] {
-  const start = middle - windowSize;
-  const end = middle + windowSize;
-  const years = [];
+export function buildYears(middle: number, windowSize = 3): number[] {
+  const start = middle - windowSize
+  const end = middle + windowSize
+  const years = []
   for (let i = start; i <= end; i++) {
-    years.push(i);
+    years.push(i)
   }
-  return years;
+  return years
 }
