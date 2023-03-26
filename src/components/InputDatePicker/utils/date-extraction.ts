@@ -9,9 +9,7 @@ export function dateToStr(date: dayjs.Dayjs) {
 
 function getDateRegexp(dateFormat: string) {
   //MM-dd-YYYY [MM,dd,YYYY]
-  const dateFormatAsRegexp = dateFormat
-    .replace(/[A-Za-z]{4}/g, '([0-9]{4})')
-    .replace(/[A-Za-z]{2}/g, '([0-9]{1,2})')
+  const dateFormatAsRegexp = dateFormat.replace(/[A-Za-z]{4}/g, '([0-9]{4})').replace(/[A-Za-z]{2}/g, '([0-9]{1,2})')
   return {
     regexp: new RegExp(`^\\s*${dateFormatAsRegexp}\\s*$`),
     partsOrder: dateFormat.split(/[^A-Za-z]/),
@@ -22,10 +20,7 @@ function DatePickerException(code: string) {
   return code
 }
 
-export function strToDate(
-  strToParse: string,
-  dateFormat: string = 'YYYY-MM-DD'
-) {
+export function strToDate(strToParse: string, dateFormat = 'YYYY-MM-DD') {
   const {regexp, partsOrder} = getDateRegexp(dateFormat)
   const dateMatches = strToParse.match(regexp) // 2023-02-15, 2023 02 15;
   const dateErrors = []

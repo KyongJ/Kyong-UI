@@ -1,7 +1,5 @@
-import React, {AnchorHTMLAttributes, ButtonHTMLAttributes, FC} from 'react'
+import React, {AnchorHTMLAttributes, ButtonHTMLAttributes, FC, PropsWithChildren} from 'react'
 import classNames from 'classnames'
-import Icon from '../Icon'
-import {IconProp} from '@fortawesome/fontawesome-svg-core'
 import {ReactNode} from 'react'
 
 export type ButtonSize = 'lg' | 'md' | 'sm'
@@ -28,15 +26,14 @@ interface BaseButtonProps {
    * 设置 link 类型按钮的跳转链接
    */
   href?: string
-  children?: React.ReactNode
 }
 const prefixCls = 'Kyong-btn'
 type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
 type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 
-const Button: FC<ButtonProps> = props => {
-  const {className, btnType, size, icon, href, ...restProps} = props
+const Button: FC<PropsWithChildren<ButtonProps>> = props => {
+  const {className, btnType = 'default', size, icon, href, ...restProps} = props
   const classes = classNames(prefixCls, className, {
     [`${prefixCls}--${btnType}`]: btnType,
     [`${prefixCls}--${size}`]: size,

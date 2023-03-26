@@ -22,7 +22,9 @@ export interface DateContextType {
 
 export const DateContext = createContext<DateContextType>({
   value: {date: dayjs(), textInput: ''},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onSelectDate: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onInputChange: () => {},
 })
 

@@ -1,5 +1,4 @@
 import React, {
-  ReactElement,
   FC,
   ChangeEvent,
   InputHTMLAttributes,
@@ -7,7 +6,6 @@ import React, {
   forwardRef,
   ReactNode,
   useRef,
-  LegacyRef,
   useEffect,
   useCallback,
 } from 'react'
@@ -18,8 +16,7 @@ import {scopedClass} from '../../utils/scopedClass'
 const sc = scopedClass('Kyong-input')
 
 type InputSize = 'lg' | 'sm'
-export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLElement>, 'size' | 'prefix'> {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size' | 'prefix'> {
   disabled?: boolean
   size?: InputSize
   icon?: IconProp
@@ -31,19 +28,9 @@ export interface InputProps
   ref?: any
 }
 
-export const Input: FC<InputProps> = forwardRef((props, ref) => {
-  const {
-    disabled,
-    size,
-    icon,
-    prefix,
-    suffix,
-    prepend,
-    append,
-    style,
-    onChange = () => {},
-    ...restProps
-  } = props
+// eslint-disable-next-line react/display-name
+const Input: FC<InputProps> = forwardRef((props: InputProps, ref) => {
+  const {disabled, size, icon, prefix, suffix, prepend, append, style, onChange, ...restProps} = props
   const [prefixPadding, setPrefixPadding] = useState(11)
   const [suffixPadding, setSuffixPadding] = useState(11)
   const prefixRef = useRef<HTMLDivElement>(null)
@@ -59,7 +46,7 @@ export const Input: FC<InputProps> = forwardRef((props, ref) => {
     [`${sc('inner')}-is-hover`]: hover,
   })
 
-  const fixControlledValue = (value: any) => {
+  const fixControlledValue = (value: string | number | readonly string[] | undefined) => {
     if (typeof value === 'undefined' || value === null) {
       return ''
     }
