@@ -8,7 +8,8 @@ interface InputComponentProps {
   ref?: any
 }
 
-const InputComponent: FC<InputComponentProps> = forwardRef((props, ref) => {
+// eslint-disable-next-line react/display-name
+const InputComponent: FC<InputComponentProps> = forwardRef((_props, ref) => {
   const {value, onInputChange} = useContext<DateContextType>(DateContext)
 
   return (
