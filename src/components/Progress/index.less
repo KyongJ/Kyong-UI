@@ -5,12 +5,6 @@
     width: 100%;
     box-sizing: border-box;
 
-    each(@theme-colors,{
-        .Kyong-progress-color-@{key}{
-            background-color: @value;
-        }
-    })
-
     &-bar-outer {
         position: relative;
         border-radius: @progress-border-radius;
@@ -64,8 +58,7 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%
-            );
+            transform: translate(-50%, -50%);
             // fill: $font-color;
             // font-size: $font-size-lg;
             // font-weight: $font-weight-base;
@@ -75,29 +68,36 @@
 
     &-svg {
         transform: rotate(-90deg);
+
         // @each $key,
         // $val in $theme-colors {
         //     .chocolate-progress-circle-color-#{$key} {
         //     stroke: $val;
         //     }
         // }
-        each(@theme-colors,{
-            .Kyong-progress-circle-color-@{key}{
+        each(@theme-colors, {
+            .Kyong-progress-circle-color-@{key} {
                 stroke: @value;
                 stroke-linecap: round; // inherit
             }
-        })
-        circle {
-            fill: none;
-            transition: stroke-dashoffset 0.3s linear;
-        }
 
-        .arc-background {
-            stroke: @gray-100;
-        }
+        }) circle {
+        fill: none;
+        transition: stroke-dashoffset 0.3s linear;
     }
 
+    .arc-background {
+        stroke: @gray-100;
+    }
 }
+}
+
+each(@theme-colors, {
+    .Kyong-progress-color-@{key} {
+        background-color: @value;
+    }
+
+}) 
 
 @keyframes progress-loading {
     0% {
