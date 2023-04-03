@@ -40,8 +40,6 @@ const DateManager = (props: DateManagerProps) => {
       date,
       textInput: dateToStr(date),
     }
-    console.log(e)
-    console.log(nextState)
     setState(nextState)
 
     onChange && onChange(e, {...nextState, origin: 'PICKER'})

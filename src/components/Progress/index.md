@@ -1,3 +1,8 @@
+---
+group:
+  title: 数据展示 # 配置页面标题,同时生成 <title> 标签
+  order: 3
+---
 # Progress
 展示操作的当前进度。
 

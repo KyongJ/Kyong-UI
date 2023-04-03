@@ -1,5 +1,6 @@
 ---
-title: DatePicker 日期选择框 # 配置页面标题,同时生成 <title> 标签
+group:
+  title: 数据录入 # 配置页面标题,同时生成 <title> 标签
 description: 输入或选择日期的控件 # 配置页面标题,同时生成 <title> 标签
 ---
 # InputDatePicker

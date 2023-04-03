@@ -1,4 +1,10 @@
-# Select
+---
+group:
+  title: 数据录入 # 配置页面标题,同时生成 <title> 标签
+  order: 2
+---
+
+## Select
 下拉选择器。
 
 #### 基本使用

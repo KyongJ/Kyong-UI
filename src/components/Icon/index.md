@@ -1,5 +1,7 @@
 ---
-title: Icon 图标 # 配置页面标题,同时生成 <title> 标签
+group:
+  title: 基础组件 # 配置页面标题,同时生成 <title> 标签
+  order: 1
 ---
 
 # Icon

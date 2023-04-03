@@ -2,11 +2,11 @@ import dayjs from 'dayjs'
 import React, {ChangeEvent, FC, useRef, useState} from 'react'
 import FocusManager from '../../utils/FocusManager'
 import Calendar from './calendar'
-import DataManager from './DataManager'
+import DataManager, {DateManagerState} from './DataManager'
 import InputComponent from './input'
 
 interface InputDatePickerProps {
-  onChange?: (e: ChangeEvent<Element>, payload: any) => void
+  onChange?: (e: ChangeEvent<Element>, payload: DateManagerState) => void
 }
 
 const InputDatePicker: FC<InputDatePickerProps> = props => {
@@ -22,12 +22,12 @@ const InputDatePicker: FC<InputDatePickerProps> = props => {
     setShowPicker(false)
   }
 
-  const handleOnChange = (e: ChangeEvent<Element>, payload: any) => {
+  const handleOnChange = (e: ChangeEvent<Element>, payload: DateManagerState) => {
     onChange && onChange(e, payload)
     console.log('payload: ', payload)
     if (payload.origin === 'PICKER') {
       // TODO: 未获取到 ref
-      inputRef.current && inputRef.current.focus()
+      // inputRef.current && inputRef.current.focus()
       setShowPicker(false)
     }
   }

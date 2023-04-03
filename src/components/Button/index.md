@@ -1,5 +1,6 @@
 ---
-title: Button 按钮 # 配置页面标题,同时生成 <title> 标签
+group:
+  title: 基础组件 # 配置页面标题,同时生成 <title> 标签
 ---
 
 # Button
