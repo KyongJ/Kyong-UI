@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import Button from '../Button'
 import {buildMonths} from './utils/generator'
 
-const sc = scopedClass('Kyong-picker-month')
+const sc = scopedClass('Kyong-calendar-month')
 
 export type MonthOfYear = {
   index: number

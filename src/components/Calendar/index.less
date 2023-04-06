@@ -1,0 +1,138 @@
+@import '../../styles/variables.less';
+
+.Kyong-calendar {
+  width: 25rem;
+  border-radius: 2px;
+  padding: .8rem;
+  border: 0.1rem solid @gray-300;
+  background-color: @white;
+
+  &-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &-header {
+    user-select: none;
+    line-height: 2.7rem;
+
+    &::after {
+      content: "";
+      width: 100%;
+      border-bottom: 0.1rem solid #edeeef;
+      position: absolute;
+      left: 0;
+      top: 2.7rem;
+    }
+  }
+
+  &-weeks {
+    cursor: pointer;
+  }
+
+  &-weeks-item {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &-day {
+    line-height: 2.7rem;
+
+    .Kyong-calendar-is-today {
+      background-color: lighten(@primaryColor, 52%);
+      border: .1rem solid @primaryColor !important;
+    }
+
+    .Kyong-calendar-is-currentMonth {
+      opacity: .5;
+    }
+
+    .Kyong-calendar-is-selected {
+      background-color: @primaryColor;
+      border-color: @primaryColor;
+      color: @white;
+    }
+
+    .Kyong-calendar-day-item {
+      width: 2.4rem;
+      height: 2.4rem;
+      line-height: 2.4rem;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+    }
+  }
+}
+
+.Kyong-calendar-view-layout {
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-body {
+    margin-top: .5rem;
+    flex: 1;
+  }
+
+  &-footer {
+    text-align: center;
+    &::before {
+      content: '';
+      display: block;
+      border-top: 0.1rem solid #edeeef;
+      margin-bottom: .5rem;
+    }
+  }
+}
+
+.Kyong-calendar-month {
+
+  &-wrapper {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &-cell {
+    width: 33.3%;
+    border: 0.01rem solid @primaryColor;
+    // padding: 0;
+  }
+
+  &-is-selected {
+    background-color: @primaryColor;
+    color: @white;
+  }
+
+  &-btn-text {
+    height: 5.7rem;
+    width: 100%;
+    padding: 0;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+}
+
+.Kyong-calendar-header-title {
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    margin-right: 2.5rem;
+
+    >span:nth-of-type(1) {
+      margin-right: .8rem;
+    }
+
+    >span:nth-of-type(2) {
+      margin-left: .8rem;
+    }
+  }
+}

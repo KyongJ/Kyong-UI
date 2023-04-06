@@ -12,4 +12,4 @@ export {default as InputDatePicker} from './components/InputDatePicker/'
 export {default as Select} from './components/Select'
 export {default as Option} from './components/Select/selectOption'
 export {default as Progress} from './components/Progress'
-
+export {default as Calendar} from './components/Calendar'
