@@ -13,7 +13,8 @@ export interface CalendarProps {
   cellRender?: (date: dayjs.Dayjs) => React.ReactNode
 }
 
-const Calendar: FC<CalendarProps> = () => {
+const Calendar: FC<CalendarProps> = props => {
+  const {cellRender} = props
   const today = dayjs()
   const initialCalendar = {
     year: today.year(),
