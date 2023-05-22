@@ -1,9 +1,6 @@
 ---
 group:
   title: 数据录入 # 配置页面标题,同时生成 <title> 标签
-title: Input
-cover: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*I5a2Tpqs3y0AAAAAAAAAAAAADrJ8AQ/original
-coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*Tr90QKrE_LcAAAAAAAAAAAAADrJ8AQ/original
 demo:
   cols: 2
 ---

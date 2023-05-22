@@ -67,9 +67,9 @@ const Progress: FC<ProgressProps> = props => {
     animation,
   } = props
   let offset = 0
-  let radius = (width - strokeHeight) / 2
-  let perimeter = 2 * +radius * Math.PI
-  let circleFontsize = width/7;
+  const radius = (width - strokeHeight) / 2
+  const perimeter = 2 * +radius * Math.PI
+  const circleFontsize = width / 7
 
   offset = (max - percent) / max
 
@@ -81,23 +81,14 @@ const Progress: FC<ProgressProps> = props => {
 
   if (type === 'circle') {
     return (
-      <div
-        className={classNames(`${prefixCls}-circle-wrapper`)}
-        style={{...style, width: width, height: width}}
-      >
+      <div className={classNames(`${prefixCls}-circle-wrapper`)} style={{...style, width: width, height: width}}>
         <svg
           className={classNames(className, `${prefixCls}-svg`)}
           viewBox={`0 0 ${width} ${width}`}
           width={width}
           height={width}
         >
-          <circle
-            cx={cx}
-            cy={cy}
-            r={radius}
-            strokeWidth={strokeHeight}
-            className="arc-background"
-          />
+          <circle cx={cx} cy={cy} r={radius} strokeWidth={strokeHeight} className="arc-background" />
 
           <circle
             cx={cx}
@@ -127,9 +118,7 @@ const Progress: FC<ProgressProps> = props => {
             })}
             style={{width: `${text}${unit}`}}
           >
-            {showText && (
-              <span className={sc('bar-inner-text')}>{`${text}${unit}`}</span>
-            )}
+            {showText && <span className={sc('bar-inner-text')}>{`${text}${unit}`}</span>}
           </div>
         </div>
       </div>

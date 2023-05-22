@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import React, {FC, useRef, useState, ReactNode} from 'react'
+import React, {FC, useRef, useState} from 'react'
 import DateView from './dateView'
 import MonthYearView from './monthYearView'
 
@@ -10,7 +10,7 @@ export interface CalendarType {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CalendarProps {
-  cellRender?: (date: dayjs.Dayjs) => React.ReactNode
+  cellRender?: (year: string, month: string, day: string) => React.ReactNode
 }
 
 const Calendar: FC<CalendarProps> = props => {
@@ -41,7 +41,7 @@ const Calendar: FC<CalendarProps> = props => {
           calendar={calendar}
           onSelectMonthYear={setCalendar}
           onTitleClick={onSetMonthYearView}
-
+          cellRender={cellRender}
           //   onClickToday={onClickToday}
         />
       ) : (

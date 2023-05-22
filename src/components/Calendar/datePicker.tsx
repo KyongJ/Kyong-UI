@@ -11,12 +11,14 @@ const sc = scopedClass('Kyong-calendar')
 export interface DatePickerProps {
   calendar: CalendarType
   // onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  cellRender?: (year: string, month: string, day: string) => React.ReactNode
   className?: string
 }
 
 const DatePicker: FC<DatePickerProps> = props => {
   const {
     calendar: {year, monthIndex},
+    cellRender,
   } = props
 
   const weeks = useMemo(() => buildWeeks(dayjs(new Date(year, monthIndex))), [year, monthIndex])
@@ -42,18 +44,21 @@ const DatePicker: FC<DatePickerProps> = props => {
               //  // 选中日期
               return (
                 <td key={j} className={classNames(sc('day'))}>
-                  <Button
-                    className={classNames(sc('day-item'), {
-                      [`${sc('is-today')}`]: isToday,
-                      [`${sc('is-currentMonth')}`]: !isCurrentMonth,
-                    })}
-                    btnType="text"
-                    onClick={e => {
-                      // onSelectDate && onSelectDate(e as unknown as ChangeEvent<HTMLInputElement>, day)
-                    }}
-                  >
-                    {day.format('D')}
-                  </Button>
+                  {cellRender ? (
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                      {cellRender(day.format('YYYY'), day.format('MM'), day.format('D'))}
+                    </div>
+                  ) : (
+                    <Button
+                      className={classNames(sc('day-item'), {
+                        [`${sc('is-today')}`]: isToday,
+                        [`${sc('is-currentMonth')}`]: !isCurrentMonth,
+                      })}
+                      btnType="text"
+                    >
+                      {day.format('D')}
+                    </Button>
+                  )}
                 </td>
               )
             })}

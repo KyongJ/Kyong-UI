@@ -5,11 +5,13 @@ import ViewLayout from './viewLayout'
 import HeaderTitle from './headerTitle'
 import {CalendarType} from '.'
 import Icon from '../Icon'
+import dayjs from 'dayjs'
 
 interface DateViewProps {
   calendar: CalendarType
   onSelectMonthYear?: Dispatch<SetStateAction<{year: number; monthIndex: number}>>
   onTitleClick?: MouseEventHandler<HTMLElement>
+  cellRender?: (year: string, month: string, day: string) => React.ReactNode
   //   onClickToday?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -22,6 +24,7 @@ const DateView: FC<DateViewProps> = (props: DateViewProps) => {
     calendar: {year, monthIndex},
     onSelectMonthYear,
     onTitleClick,
+    cellRender,
     // onClickToday,
   } = props
 
@@ -45,7 +48,7 @@ const DateView: FC<DateViewProps> = (props: DateViewProps) => {
         middleElement: <HeaderTitle year={year} monthIndex={monthIndex} onTitleClick={onTitleClick} />,
         rightElement: <Button btnType="text" icon={<Icon icon="angle-right" />} size="sm" onClick={goToNextMonth} />,
       }}
-      bodyElement={<DatePicker calendar={props.calendar} />}
+      bodyElement={<DatePicker calendar={props.calendar} cellRender={cellRender} />}
       footerElement={<Button btnType="text">Today</Button>}
     ></ViewLayout>
   )
