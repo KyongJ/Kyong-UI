@@ -34,6 +34,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "ahooks": "^3.7.7",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.7",
     "jest": "26.6.0",
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.4.4",
+    "@faker-js/faker": "^8.0.2",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.4.0",
