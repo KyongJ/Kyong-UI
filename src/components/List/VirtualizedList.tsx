@@ -1,11 +1,6 @@
 import React, {useState, useCallback, useMemo} from 'react'
 import {flushSync} from 'react-dom'
 
-export interface ListItem {
-  id: number
-  content: React.ReactNode
-}
-
 interface VirtualizedListProps<T> {
   items: T[]
   containerHeight: number
@@ -73,10 +68,10 @@ function VirtualizedList<T>({
       <div style={{height: totalHeight, position: 'absolute', left: 0, top: 0, right: 0}}></div>
       <div
         style={{
-          transform: `translate3d(0px, ${currentOffset}px, 0px)`,
+          // transform: `translate3d(0px, ${currentOffset}px, 0px)`,
           position: 'relative',
           left: 0,
-          top: 0,
+          top: currentOffset,
           right: 0,
         }}
       >

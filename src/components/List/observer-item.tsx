@@ -1,9 +1,11 @@
 import React, {useContext, useEffect, useRef, PropsWithChildren} from 'react'
 import {ListContext} from './VariableSizeList'
+import scopedClass from '../../utils/scopedClass'
 
 interface ListItemType {
   index?: number
 }
+const sc = scopedClass('Kyong-list')
 
 export default function ListItem(props: PropsWithChildren<ListItemType>) {
   const {index = 0} = props
@@ -41,7 +43,7 @@ export default function ListItem(props: PropsWithChildren<ListItemType>) {
   }
 
   return (
-    <li key={index} style={{color: '#555', boxSizing: 'border-box', borderBottom: '1px solid #999'}} ref={element}>
+    <li className={sc('item')} key={index} ref={element}>
       {props.children}
     </li>
   )

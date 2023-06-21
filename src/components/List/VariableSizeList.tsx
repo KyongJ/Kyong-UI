@@ -1,7 +1,7 @@
 import React, {FC, createContext, useEffect, useMemo, useRef, useState} from 'react'
 import ObserverItem from './observer-item'
 
-interface VariableSizeListProps<T> {
+interface VariableSizeListProps<T> extends Omit<React.HTMLAttributes<any>, 'children'> {
   dataSource: T[]
   containerHeight: number
   estimatedItemHeight?: number

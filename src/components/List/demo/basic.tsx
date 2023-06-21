@@ -1,17 +1,29 @@
 import React from 'react'
 import './styles.less'
 import VirtualizedList, {ListItem} from '../VirtualizedList'
+import {faker} from '@faker-js/faker'
+type Item = {
+  id: number
+  value: string
+}
 
 export default function App() {
-  const list = new Array(10000).fill(0).map((item, i) => ({id: i, content: null}))
+  const data: Item[] = []
+
+  for (let id = 0; id < 100; id++) {
+    const item = {
+      id,
+      value: '', // 长文本
+    }
+    data.push(item)
+  }
 
   return (
-    <div style={{width: 300}}>
-      列表项高度固定 - 虚拟列表实现
+    <div style={{width: 500}}>
       <VirtualizedList
         containerHeight={400}
         estimatedItemHeight={50}
-        items={list}
+        items={data}
         renderListItem={item => {
           return (
             <div

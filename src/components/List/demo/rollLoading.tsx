@@ -1,20 +1,19 @@
 import React, {useState} from 'react'
 import './styles.less'
-import VirtualizedList, {ListItem} from '../VirtualizedList'
+import VirtualizedList from '../VirtualizedList'
 
 export default function App() {
   const [count, setCount] = useState(1)
-  const [data, setData] = useState(new Array(100).fill(0).map((item, i) => ({id: i, content: null} as ListItem)))
+  const [data, setData] = useState(new Array(100).fill(0).map((item, i) => ({id: i, content: null})))
 
   const onScroll = () => {
-    const List = new Array(100).fill(0).map((item, i) => ({id: i + count * 100, content: null} as ListItem))
+    const List = new Array(100).fill(0).map((item, i) => ({id: i + count * 100, content: null}))
     setData([...data, ...List])
     setCount(count => count + 1)
   }
 
   return (
-    <div style={{width: 300}}>
-      列表项高度固定 - 虚拟列表实现
+    <div style={{width: 500}}>
       <VirtualizedList
         containerHeight={400}
         estimatedItemHeight={50}

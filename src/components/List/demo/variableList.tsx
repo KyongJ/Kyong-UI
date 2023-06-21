@@ -14,22 +14,23 @@ for (let id = 0; id < 100; id++) {
   const item = {
     id,
     value: faker.lorem.paragraphs(), // 长文本
+    src: '',
   }
 
-  // if (id % 10 === 1) {
-  //   item.src = faker.image.image()
-  // }
+  if (id % 10 === 1) {
+    item.src = faker.image.image()
+  }
   data.push(item)
 }
 
 export default function App() {
   return (
     <div style={{width: 500}}>
-      <VariableSizeList dataSource={data} containerHeight={800}>
+      <VariableSizeList dataSource={data} containerHeight={500}>
         {(item: Item) => (
           <>
             {item.value}
-            {item.src && <img src={item.src} alt="" />}
+            {item.src && <img width={400} src={item.src} alt="" />}
           </>
         )}
       </VariableSizeList>
