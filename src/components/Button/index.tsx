@@ -47,7 +47,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = props => {
   } else {
     return (
       <button className={classes} {...restProps}>
-        {icon ? icon : null}
+        {icon ? <span style={{marginRight: 5}}>{icon}</span> : null}
         {props.children}
       </button>
     )

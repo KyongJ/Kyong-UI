@@ -1,4 +1,5 @@
 import {defineConfig} from 'dumi'
+import path from 'path'
 
 const repo = 'Kyong-UI' // 项目名(也就是你的仓库名)
 

@@ -61,8 +61,8 @@ import React from "react";
 import { Button ,Icon} from "KyongUI";
 
 export default () => {
-  const Left = <Icon icon='align-left' style={{marginRight:5}} />
-  const apple = <Icon icon='apple-alt' style={{marginRight:5}} />
+  const Left = <Icon icon='align-left' />
+  const apple = <Icon icon='apple-alt' />
   return (
     <div style={{display:'flex'}}>
       <div style={{ marginRight: 10}}>
