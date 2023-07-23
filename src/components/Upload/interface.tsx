@@ -121,6 +121,12 @@ export interface AjaxProps {
   onSuccess: (arg0: any) => void
 }
 
+export interface UploadListProps {
+  files: FileItem[]
+  onRemove?: (file: FileItem) => void
+  onPreview?: (file: FileItem) => void
+}
+
 export interface FileItem {
   uid: string
   name: string
@@ -128,4 +134,5 @@ export interface FileItem {
   file?: File
   url?: string
   percentage?: number
+  showProgress?: boolean
 }

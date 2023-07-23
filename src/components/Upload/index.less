@@ -9,4 +9,50 @@
     &-select {
         display: inline-block;
     }
+
+    &-list {
+        margin-top: 8px;
+
+        &-file {
+            position: relative;
+            list-style: none;
+            padding: 4px;
+            color: @gray-600;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: background-color 0.2s ease-in-out;
+            overflow: hidden;
+
+            &>span {
+                cursor: pointer;
+                transition: color 0.2s ease-in-out;
+            }
+
+            &:hover {
+                background: @gray-200;
+                cursor: pointer;
+                &>span {
+                    color: @blue;
+                }
+
+                .Kyong-upload-list-remove {
+                    opacity: 1 !important;
+                }
+            }
+        }
+
+        &-remove {
+            opacity: 0;
+            font-size: 12px;
+            cursor: pointer;
+            float: right;
+            margin-right: 4px;
+            color: @g05;
+            transition: all 0.2s ease;
+z
+            &:hover {
+                color: #444;
+            }
+        }
+    }
 }

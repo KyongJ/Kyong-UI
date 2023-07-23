@@ -6,6 +6,7 @@ import ajax from './ajax'
 import scopedClass from '../../utils/scopedClass'
 import {FileItem, UploadProps} from './interface'
 import Icon from '../Icon'
+import UploadList from './UploadList'
 // import { FormItemContext } from '../Form/FormItem'
 
 // const PropTypes = require('prop-types')
@@ -44,7 +45,7 @@ const Upload: FC<UploadProps> = props => {
   //   const [dragOver, setDragOver] = useState(false)
   //   const [, setFileList] = useState<any>([])
   //   const [tempIndex, setTempIndex] = useState(1)
-  const dragOver = useRef<any>(false)
+  const dragOver = useRef<boolean>(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const [fileList, setFileList] = useState<FileItem[]>(defaultFileList)
 
@@ -109,24 +110,20 @@ const Upload: FC<UploadProps> = props => {
 
   const handleProgress = (e: ProgressEvent<EventTarget>, fileItem: FileItem, percent: number) => {
     onProgress && onProgress(e, fileItem, fileList)
-    // console.log(fileItem)
-    console.log(percent)
+
     changeFileItem(fileItem, 'percentage', percent || 0)
   }
 
-  const handleSuccess = (res: any, fileItem: FileItem) => {
+  const handleSuccess = async (res: any, fileItem: FileItem) => {
     if (fileItem) {
       // 文件上传状态变更为finished完成
       changeFileItem(fileItem, 'status', 'finished')
 
       onSuccess && onSuccess(res, fileItem, fileList)
-      // 触发向上查找，form-change事件  此处可以暂时屏蔽
-      //   this.dispatch('tbFormItem', 'form-change', _file)
-      // setTimeout(() => {
-      //   // 上传成功500ms之后对应的上传进度条就不要在展示了
-      //   _file.showProgress = false
-      //   forceUpdate()
-      // }, 500)
+
+      setTimeout(() => {
+        changeFileItem(fileItem, 'showProgress', false)
+      }, 500)
     }
   }
 
@@ -179,12 +176,25 @@ const Upload: FC<UploadProps> = props => {
         percentage: 0,
         name: files[i].name,
         file: files[i],
+        showProgress: true,
       })
       await uploadFile(files[i], list[list.length - 1])
     }
 
     inputRef.current && (inputRef.current.value = '')
     setFileList([...fileList, ...list])
+  }
+
+  const handleFileRemove = (file: FileItem) => {
+    setFileList(fileList => fileList.splice(fileList.indexOf(file), 1))
+    onRemove && onRemove(file, fileList)
+  }
+
+  const handleFilePreview = (file: FileItem) => {
+    if (file.status === 'finished') {
+      // 触发点击fileList单项 单击事件
+      onPreview && onPreview(file)
+    }
   }
 
   return (
@@ -216,15 +226,9 @@ const Upload: FC<UploadProps> = props => {
           </Button>
         )}
       </div>
-      {/* <slot name='tip'></slot> */}
-      {/* {props.tip} */}
-      {/* {showFileList ? (
-        <UploadList
-          files={fileListRef.current}
-          fileRemove={handleRemove}
-          filePreview={handlePreview}
-        ></UploadList>
-      ) : null} */}
+      {showFileList ? (
+        <UploadList files={fileList} onRemove={handleFileRemove} onPreview={handleFilePreview}></UploadList>
+      ) : null}
     </div>
   )
 }
