@@ -4,11 +4,10 @@ group:
   order: 2
 ---
 
-倒计时组件
+# CountDown
 
-## 何时使用
 用于计算倒计事件
 
-#### 基本使用
+## 基本使用
 
 <code src='./demo/index.tsx'></code>

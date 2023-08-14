@@ -4,11 +4,10 @@ group:
   order: 2
 ---
 
-## Select
+# Select
 下拉选择器。
 
-#### 基本使用
-基本使用
+## 基本使用
 ```tsx
 import React from 'react';
 import { Select} from 'KyongUI';

@@ -7,18 +7,18 @@ demo:
 # List
 虚拟列表展示
 
-## 何时使用
+#### 何时使用
 - 展示，可承载文字、列表、图片、段落，常用于后台数据展示页面
 - 分为固定列表和可变列表，提高大数据展示性能。
 
 ## 代码演示
 <!-- prettier-ignore -->
-#### 基本使用
-列表项高度固定 - 虚拟列表实现
+
+### 高度固定
 <code src="./demo/basic.tsx" />
 
-列表项高度固定 - 滚动加载
+### 滚动加载
 <code src="./demo/rollLoading.tsx" />
 
-列表项高度可变 - 虚拟列表实现
+### 高度可变
 <code src="./demo/variableList.tsx" />

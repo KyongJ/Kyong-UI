@@ -6,13 +6,13 @@ group:
 # Progress
 展示操作的当前进度。
 
-### 何时使用
+#### 何时使用
 在操作需要较长时间才能完成时，为用户显示该操作的当前进度和状态。
 
 当一个操作会打断当前界面，或者需要在后台运行，且耗时可能超过 2 秒时；
 当需要显示一个操作完成的百分比时。
 
-#### 基础使用
+## 基础使用
 基础使用
 ```tsx
 import React from 'react';
@@ -36,7 +36,7 @@ export default () => (
 )
 ```
 
-#### 不同主题
+## 不同主题
 一共支持七种主题：`primary` 、 `secondary` 、 `success` 、 `warning` 、 `danger` 、 `info` 、 `dark`
 基础使用
 ```tsx
@@ -56,7 +56,7 @@ export default () => (
 )
 ```
 
-#### 圆形进度条
+## 圆形进度条
 展示圆形进度条，同时也具有不同的七种主题
 ```tsx
 import React from 'react';
@@ -73,7 +73,7 @@ export default () => (
 )
 ```
 
-#### 动态演示
+## 动态演示
 使用`Button`动态控制进度条的进度
 ```tsx
 import React ,{useState} from 'react';
@@ -100,7 +100,7 @@ export default () => {
 }
 ```
 
-#### 设置粗细
+## 设置粗细
 通过 `strokeHeight` 来设置条形进度条和圆形进度条的粗细
 ```tsx
 import React ,{useState} from 'react';

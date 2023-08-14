@@ -4,7 +4,7 @@ group:
 description: 输入或选择日期的控件 # 配置页面标题,同时生成 <title> 标签
 ---
 # InputDatePicker
-输入或选择日期的控件
+## 输入或选择日期的控件
 ```tsx
 import React from 'react';
 import { InputDatePicker } from 'KyongUI';
