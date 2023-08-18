@@ -1,31 +1,23 @@
 import React, {useEffect, useRef, useState} from 'react'
 import WebWorker from './worker'
+import {formatTime} from './utils/compute'
 
 interface CountDownTimerProps {
-  startTime: number
   endTime: number
-  currentTime: number
+  currentTime?: number
+  format?: string
   onEnd?: () => void
 }
 
 const CountDownTimer: React.FC<CountDownTimerProps> = ({
-  startTime,
   endTime,
   currentTime = Date.now(),
+  format = 'hh:mm:ss',
   onEnd = Function.prototype,
 }) => {
   const restTime = useRef<number>(endTime - currentTime)
 
-  // 格式化时间
-  const relativeTime = (time: number): string => {
-    if (time <= 0) {
-      return '00:00'
-    }
-    const minute = Math.floor(time / 60000) // 分钟数
-    const second = Math.floor((time / 1000) % 60) // 秒数
-    return `${minute >= 10 ? minute : '0' + minute}:${second >= 10 ? second : '0' + second}`
-  }
-  const [time, setTime] = useState<string>(relativeTime(restTime.current))
+  const [time, setTime] = useState<string>(formatTime(format, restTime.current))
 
   // work.js
   const work = function (this: Worker) {
@@ -61,7 +53,7 @@ const CountDownTimer: React.FC<CountDownTimerProps> = ({
         onEnd()
       }
       restTime.current = e.data
-      setTime(relativeTime(e.data))
+      setTime(formatTime(format, e.data))
     })
 
     worker.postMessage({
@@ -72,7 +64,6 @@ const CountDownTimer: React.FC<CountDownTimerProps> = ({
 
   useEffect(() => {
     workerHandler()
-
     return () => {
       worker.postMessage({state: 'stop'})
     }

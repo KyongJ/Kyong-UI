@@ -3,6 +3,7 @@ import objectSupport from 'dayjs/plugin/objectSupport'
 
 dayjs.extend(objectSupport)
 
+// date转str
 export function dateToStr(date: dayjs.Dayjs) {
   return date.format('YYYY-MM-DD')
 }
@@ -20,6 +21,7 @@ function DatePickerException(code: string) {
   return code
 }
 
+//str 转Date
 export function strToDate(strToParse: string, dateFormat = 'YYYY-MM-DD') {
   const {regexp, partsOrder} = getDateRegexp(dateFormat)
   const dateMatches = strToParse.match(regexp) // 2023-02-15, 2023 02 15;
