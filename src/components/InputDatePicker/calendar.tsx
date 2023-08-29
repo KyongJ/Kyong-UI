@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import React, {ChangeEvent, FC, useContext, useEffect, useRef, useState} from 'react'
+import React, {ChangeEvent, FC, useContext, useLayoutEffect, useRef, useState} from 'react'
 import {DateContext} from './DataManager'
 import DateView from './dateView'
 import MonthYearView from './monthYearView'
@@ -38,7 +38,7 @@ const Calendar: FC<CalendarProps> = () => {
 
   const onSetDateView = setDateView.bind(null, true)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setCalendar({year: value.date.year(), monthIndex: value.date.month()})
   }, [value.date])
 

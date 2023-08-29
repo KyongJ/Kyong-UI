@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef, useCallback, FC} from 'react'
 import Button from '../Button'
 import classNames from 'classnames'
 // import UploadList from './UploadList'
-import ajax from './ajax'
+import request from './utils/request'
 import scopedClass from '../../utils/scopedClass'
 import {FileItem, UploadProps} from './interface'
 import Icon from '../Icon'
@@ -143,13 +143,17 @@ const Upload: FC<UploadProps> = props => {
     if (!checkFile(file)) return
     // 改变状态
     // changeFileItem(fileItem, 'status', 'uploading')
-
-    ajax({
+    const formData = new FormData()
+    if (data) {
+      Object.keys(data).map(key => {
+        return formData.append(key, data[key])
+      })
+    }
+    formData.append(name, file)
+    request({
       headers: headers, // 自定义的请求头
       withCredentials: withCredentials, // 当前请求为跨域类型时是否在请求中协带cookie
-      file: file, // 文件
-      data: data, //附带参数
-      filename: name, // 上传文件的key值
+      data: formData,
       action: action, // 上传地址
       // 上传时的钩子
       onProgress: (e, percent) => {

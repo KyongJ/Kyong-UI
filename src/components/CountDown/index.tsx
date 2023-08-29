@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
-import WebWorker from './worker'
 import {formatTime} from './utils/compute'
+import WebWorker from '../../utils/workerBuilder'
 
 interface CountDownTimerProps {
   endTime: number

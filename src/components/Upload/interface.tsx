@@ -111,14 +111,12 @@ export interface UploadProps {
 
 export interface AjaxProps {
   action: string
-  data: Record<string, string | Blob>
-  filename: string
-  file: File
-  withCredentials: boolean
-  headers: Record<string, string>
-  onProgress: (arg0: ProgressEvent<EventTarget>, percent: number) => void
-  onError: (arg0: Error | ProgressEvent<EventTarget>, arg1: undefined) => void
-  onSuccess: (arg0: any) => void
+  data: any
+  withCredentials?: boolean
+  headers?: Record<string, string>
+  onProgress?: (arg0: ProgressEvent<EventTarget>, percent: number) => void
+  onError?: (arg0: Error | ProgressEvent<EventTarget>, arg1: undefined) => void
+  onSuccess?: (arg0: any) => void
 }
 
 export interface UploadListProps {

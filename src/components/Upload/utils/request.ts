@@ -12,7 +12,7 @@
     onloadend	获取完成（不论成功与否）
  */
 
-import {AjaxProps} from './interface'
+import {AjaxProps} from '../interface'
 
 // 解析错误
 function getError(action: string, _option: AjaxProps, xhr: XMLHttpRequest) {
@@ -39,7 +39,7 @@ function getBody(xhr: XMLHttpRequest) {
 }
 
 export default function upload(option: AjaxProps) {
-  const {action, data, filename, file, withCredentials, headers, onProgress, onError, onSuccess} = option
+  const {action, data, withCredentials = true, headers, onProgress, onError, onSuccess} = option
   let percent = 0
   if (typeof XMLHttpRequest === 'undefined') {
     return
@@ -54,32 +54,22 @@ export default function upload(option: AjaxProps) {
       if (e.total > 0) {
         percent = (e.loaded / e.total) * 100
       }
-      onProgress(e, percent)
+      onProgress && onProgress(e, percent)
     }
   }
 
-  // new一个表单对象
-  const formData = new FormData()
-
-  if (data) {
-    Object.keys(data).map(key => {
-      return formData.append(key, data[key])
-    })
-  }
-  formData.append(filename, file)
-
   xhr.onerror = function error(e) {
-    onError(e, undefined)
+    onError && onError(e, undefined)
   }
 
   xhr.onload = function onload() {
     // 判断是否获取成功
     if (xhr.status < 200 || xhr.status >= 300) {
       // 如果失败了返回错误  并且执行回调错误钩子
-      return onError(getError(action, option, xhr), getBody(xhr))
+      return onError && onError(getError(action, option, xhr), getBody(xhr))
     }
     // 如果成功了就执行对应的成功事件  并且返回成功后的回调 res
-    onSuccess(getBody(xhr))
+    onSuccess && onSuccess(getBody(xhr))
   }
 
   // 初始化请求  第三个参数为是否异步
@@ -97,5 +87,5 @@ export default function upload(option: AjaxProps) {
     }
   }
   // 发送请求
-  xhr.send(formData)
+  xhr.send(data)
 }
