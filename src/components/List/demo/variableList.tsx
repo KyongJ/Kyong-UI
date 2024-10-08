@@ -25,7 +25,7 @@ for (let id = 0; id < 100; id++) {
 
 export default function App() {
   return (
-    <div style={{width: 500}}>
+    <div style={{width: 1000}}>
       <VariableSizeList dataSource={data} containerHeight={500}>
         {(item: Item) => (
           <>
